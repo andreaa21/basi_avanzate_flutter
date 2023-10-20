@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:basi_avanzate/schermata_iniziale.dart';
 
 const startAlignment = Alignment.topLeft;
 const endAlignment = Alignment.bottomRight;
@@ -18,6 +19,9 @@ class GradientContainer extends StatelessWidget {
           begin: startAlignment,
           end: endAlignment,
         ),
+      ),
+      child: const Center(
+        child: SchermataIniziale(),
       ),
     );
   }
