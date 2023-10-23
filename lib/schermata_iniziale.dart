@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SchermataIniziale extends StatelessWidget {
-  const SchermataIniziale({super.key});
+  const SchermataIniziale(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(context) {
@@ -27,7 +29,7 @@ class SchermataIniziale extends StatelessWidget {
           height: 30,
         ),
         OutlinedButton.icon(
-          onPressed: () {},
+          onPressed: startQuiz,
           style: OutlinedButton.styleFrom(
             foregroundColor: Colors.white,
           ),
