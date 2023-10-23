@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SchermataIniziale extends StatelessWidget {
   const SchermataIniziale(this.startQuiz, {super.key});
@@ -21,11 +22,11 @@ class SchermataIniziale extends StatelessWidget {
           const SizedBox(
             height: 80,
           ),
-          const Text(
+          Text(
             'Learn flutter the fun way!',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 28,
+            style: GoogleFonts.lato(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              fontSize: 24,
             ),
           ),
           const SizedBox(

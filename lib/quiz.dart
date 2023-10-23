@@ -1,7 +1,7 @@
+import 'package:basi_avanzate/data/questions.dart';
 import 'package:basi_avanzate/questions_screen.dart';
 import 'package:basi_avanzate/schermata_iniziale.dart';
 import 'package:flutter/material.dart';
-// import 'package:basi_avanzate/gradient_container.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -13,12 +13,24 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   void switchScreen() {
     setState(() {
       activeScreen = 'questions-screen';
     });
+  }
+
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        selectedAnswers = [];
+        activeScreen = 'start-screen';
+      });
+    }
   }
 
   @override
@@ -36,7 +48,9 @@ class _QuizState extends State<Quiz> {
           ),
           child: activeScreen == 'start-screen'
               ? SchermataIniziale(switchScreen)
-              : const QuestionsScreen(),
+              : QuestionsScreen(
+                  onAnswerSelect: chooseAnswer,
+                ),
         ),
       ),
     );
