@@ -34,11 +34,9 @@ class _QuizState extends State<Quiz> {
               ],
             ),
           ),
-          child: Center(
-            child: activeScreen == 'start-screen'
-                ? SchermataIniziale(switchScreen)
-                : const QuestionsScreen(),
-          ),
+          child: activeScreen == 'start-screen'
+              ? SchermataIniziale(switchScreen)
+              : const QuestionsScreen(),
         ),
       ),
     );
