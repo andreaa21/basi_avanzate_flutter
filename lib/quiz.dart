@@ -1,5 +1,6 @@
 import 'package:basi_avanzate/data/questions.dart';
 import 'package:basi_avanzate/questions_screen.dart';
+import 'package:basi_avanzate/results_screen.dart';
 import 'package:basi_avanzate/schermata_iniziale.dart';
 import 'package:flutter/material.dart';
 
@@ -28,13 +29,23 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswers.length == questions.length) {
       setState(() {
         selectedAnswers = [];
-        activeScreen = 'start-screen';
+        activeScreen = 'results-screen';
       });
     }
   }
 
   @override
   Widget build(context) {
+    Widget screenWidget = SchermataIniziale(switchScreen);
+
+    if (activeScreen == 'questions-screen') {
+      screenWidget = QuestionsScreen(onAnswerSelect: chooseAnswer);
+    }
+
+    if (activeScreen == 'results-screen') {
+      screenWidget = const ResultsScreen();
+    }
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -46,11 +57,7 @@ class _QuizState extends State<Quiz> {
               ],
             ),
           ),
-          child: activeScreen == 'start-screen'
-              ? SchermataIniziale(switchScreen)
-              : QuestionsScreen(
-                  onAnswerSelect: chooseAnswer,
-                ),
+          child: screenWidget,
         ),
       ),
     );
